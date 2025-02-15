@@ -42,10 +42,10 @@ pipeline {
         }
 
         stage('Quality Gate Status Check: SonarQube') {
-            when { expression { params.action == 'create' } }
+            when { expression { params.SKIP_SONARQUBE == false } }
             steps {
                 script {
-                    withCredentials([string(credentialsId: SONARQUBE_CREDENTIALS_ID, variable: 'SONAR_TOKEN')]) {
+                    withCredentials([string(credentialsId: 'sonarqube-api', variable: 'SONAR_TOKEN')]) {
                         timeout(time: 5, unit: 'MINUTES') {
                             waitUntil {
                                 def response = sh(script: """
