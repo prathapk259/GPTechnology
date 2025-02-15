@@ -25,7 +25,7 @@ pipeline {
         }
 
         stage('Static Code Analysis: SonarQube') {
-            when { expression { params.SKIP_SONARQUBE == false } }  // Skip if true
+            when { expression { !params.SKIP_SONARQUBE } }  // Skip if true
             steps {
                 script {
                     withCredentials([string(credentialsId: 'sonarqube-api', variable: 'SONAR_TOKEN')]) {
