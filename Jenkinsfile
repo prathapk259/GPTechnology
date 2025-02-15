@@ -24,10 +24,10 @@ pipeline {
         }
 
         stage('Static Code Analysis: SonarQube') {
-            when { expression { params.action == 'create' } }
+            
             steps {
                 script {
-                    withCredentials([string(credentialsId: SONARQUBE_CREDENTIALS_ID, variable: 'SONAR_TOKEN')]) {
+                    withCredentials([string(credentialsId: 'sonarqube-api', variable: 'SONAR_TOKEN')]) {
                         sh """
                             sonar-scanner \
                             -Dsonar.projectKey=${SONARQUBE_PROJECT_KEY} \
