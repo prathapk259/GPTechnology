@@ -10,7 +10,7 @@ pipeline {
         SONARQUBE_URL = "http://http://172.174.89.20/:9000" // Update with your SonarQube URL
         SONARQUBE_PROJECT_KEY = "GPTechnology"
         SONARQUBE_CREDENTIALS_ID = "sonarqube-api" // SonarQube API key stored in Jenkins Credentials
-        DOCKER_IMAGE = "prathapk259/gptechnology"
+        DOCKER_IMAGE = "prathap259/gptechnology"
         DOCKER_TAG = "latest"
         DOCKER_CREDENTIALS = "docker" // Docker Hub credentials stored in Jenkins
     }
