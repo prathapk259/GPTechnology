@@ -65,6 +65,7 @@ pipeline {
             when { expression { params.action == 'create' } }
             steps {
                 sh "docker build -t $DOCKER_IMAGE:$DOCKER_TAG ."
+		sh "docker tag $DOCKER_IMAGE:$DOCKER_TAG prathap259/$DOCKER_IMAGE:$DOCKER_TAG"
             }
         }
 
@@ -72,7 +73,7 @@ pipeline {
             when { expression { params.action == 'create' } }
             steps {
                 withDockerRegistry([credentialsId: DOCKER_CREDENTIALS, url: ""]) {
-                    sh "docker push $DOCKER_IMAGE:$DOCKER_TAG"
+                    sh "docker push prathap259/$DOCKER_IMAGE:$DOCKER_TAG"
                 }
             }
         }
